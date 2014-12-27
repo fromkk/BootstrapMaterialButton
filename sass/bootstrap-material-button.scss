@@ -1,0 +1,409 @@
+@import "compass";
+
+$materialButtonWidth:36px;
+$materialButtonHeight: 50px;
+$materialButtonItemHeight: 3px;
+$materialButtonItemMargin: 10px;
+$materialButtonItemColor: #FFFFFF;
+$materialButtonItemHoverColor: #CCCCCC;
+
+.navbar
+{
+    .navbar-header
+    {
+        display:block;
+        width:auto;
+        float:none;
+
+        .navbar-header-left
+        {
+            display:block;
+            width:15%;
+            float:left;
+            text-align: center;
+            padding:12px 15px;
+        }
+
+        .navbar-brand
+        {
+            display:block;
+            width:70%;
+            float:left;
+            text-align: center;
+        }
+
+        .navbar-header-right
+        {
+            display:block;
+            width:15%;
+            float:left;
+            text-align: center;
+            padding:12px 15px;
+        }
+    }
+}
+
+@media screen and (max-width: 480px)
+{
+    .navbar
+    {
+        .navbar-header
+        {
+            .navbar-header-left
+            {
+                width:20%;
+            }
+
+            .navbar-brand
+            {
+                width:60%;
+            }
+
+            .navbar-header-right
+            {
+                width:20%;
+            }
+        }
+    }
+}
+
+@mixin material_button_item
+{
+    position:absolute;
+    display:block;
+    width:$materialButtonWidth;
+    height:$materialButtonItemHeight;
+    left:50%;
+    margin-left:-$materialButtonWidth/2;
+    @include transition(all 0.25s);
+}
+
+.material-button
+{
+    display:block;
+    position:relative;
+    width:$materialButtonWidth;
+    height:$materialButtonHeight;
+    margin-left:auto;
+    margin-right:auto;
+    overflow: hidden;
+    .material-button-item:before
+    {
+        background-color: $materialButtonItemColor;
+    }
+    .material-button-item:after
+    {
+        background-color: $materialButtonItemColor;
+    }
+
+    &:hover
+    {
+        .material-button-item
+        {
+            background-color: $materialButtonItemHoverColor;
+        }
+        .material-button-item:before
+        {
+            background-color: $materialButtonItemHoverColor;
+        }
+        .material-button-item:after
+        {
+            background-color: $materialButtonItemHoverColor;
+        }
+    }
+
+    .material-button-item
+    {
+        @include material_button_item;
+        background-color:$materialButtonItemColor;
+
+        &.material-button-item-1
+        {
+            top:$materialButtonItemHeight + $materialButtonItemMargin * 1;
+        }
+
+        &.material-button-item-2
+        {
+            top:$materialButtonItemHeight + $materialButtonItemMargin * 2;
+        }
+
+        &.material-button-item-3
+        {
+            top:$materialButtonItemHeight + $materialButtonItemMargin * 3;
+        }
+        &.material-button-item-4
+        {
+            top:$materialButtonItemHeight + $materialButtonItemMargin * 4;
+            @include opacity(0);
+        }
+    }
+}
+.btn.material-button
+{
+    width:$materialButtonWidth+30;
+}
+.btn.btn-block.material-button
+{
+    width:100%;
+}
+
+@mixin material_button_cross
+{
+    .material-button-item
+    {
+        &.material-button-item-1
+        {
+            top:50%;
+            margin-top:-$materialButtonItemHeight/2;
+            @include rotate(405deg);
+        }
+        &.material-button-item-2
+        {
+            top:50%;
+            margin-top:-$materialButtonItemHeight/2;
+            @include rotate(495deg);
+        }
+        &.material-button-item-3
+        {
+            top:50%;
+            margin-top:-$materialButtonItemHeight/2;
+            @include opacity(0);
+        }
+    }
+}
+
+.material-button-cross
+{
+    @include material_button_cross;
+}
+
+.material-button-cross-hover
+{
+    &:hover
+    {
+        @include material_button_cross;
+    }
+}
+
+@mixin material_button_arrow_left
+{
+    .material-button-item
+    {
+        &.material-button-item-1
+        {
+            top:63%;
+            width: $materialButtonWidth - 15px;
+            margin-top:-$materialButtonItemHeight/2;
+            margin-left:-($materialButtonWidth - 15px);
+            margin-right:auto;
+            @include rotate(405deg);
+            
+        }
+
+        &.material-button-item-2
+        {
+            top:50%;
+            margin-top:-$materialButtonItemHeight/2;
+            @include rotate(360deg);
+        }
+
+        &.material-button-item-3
+        {
+            top:37%;
+            width: $materialButtonWidth - 15px;
+            margin-top:-$materialButtonItemHeight/2;
+            margin-left:-($materialButtonWidth - 15px);
+            margin-right:auto;
+            @include rotate(495deg);
+        }
+    }
+}
+
+.material-button-arrow-left
+{
+    @include material_button_arrow_left;
+}
+
+.material-button-arrow-left-hover
+{
+    &:hover
+    {
+        @include material_button_arrow_left;
+    }
+}
+
+@mixin material_button_arrow_right
+{
+    .material-button-item
+    {
+        &.material-button-item-1
+        {
+            top:37%;
+            width: $materialButtonWidth - 15px;
+            margin-top:-$materialButtonItemHeight/2;
+            margin-left:auto;
+            margin-right:0px;
+            @include rotate(405deg);
+        }
+
+        &.material-button-item-2
+        {
+            top:50%;
+            margin-top:-$materialButtonItemHeight/2;
+            @include rotate(360deg);
+        }
+
+        &.material-button-item-3
+        {
+            top:63%;
+            width: $materialButtonWidth - 15px;
+            margin-top:-$materialButtonItemHeight/2;
+            margin-left:auto;
+            margin-right:0px;
+            @include rotate(495deg);
+        }
+    }
+}
+
+.material-button-arrow-right
+{
+    @include material_button_arrow_right;
+}
+
+.material-button-arrow-right-hover
+{
+    &:hover
+    {
+        @include material_button_arrow_right;
+    }
+}
+
+@mixin material_button_triangle
+{
+    .material-button-item
+    {
+        &.material-button-item-1
+        {
+            top:50%;
+            margin-top:-2px;
+            margin-left:-$materialButtonWidth/4;
+            @include rotate(420deg);
+        }
+        &.material-button-item-2
+        {
+            top:50%;
+            margin-top:-2px;
+            margin-left:-$materialButtonWidth/4*3;
+            @include rotate(480deg);
+        }
+        &.material-button-item-3
+        {
+            top:80%;
+            margin-top:-$materialButtonItemHeight/2;
+            @include rotate(360deg);
+        }
+    }
+}
+
+.material-button-triangle
+{
+    @include material_button_triangle;
+}
+
+.material-button-triangle-hover
+{
+    &:hover
+    {
+        @include material_button_triangle;
+    }
+}
+
+@mixin material_button_rect
+{
+    .material-button-item
+    {
+        &.material-button-item-1
+        {
+            top:50%;
+            margin-left:auto;
+            margin-right:0px;
+            @include rotate(450deg);
+        }
+        &.material-button-item-2
+        {
+            top:50%;
+            margin-left:-$materialButtonWidth;
+            margin-right:auto;
+            @include rotate(630deg);
+        }
+        &.material-button-item-3
+        {
+            top:85%;
+            @include rotate(360deg);
+
+            &:after
+            {
+                content:'';
+                @include material_button_item;
+                top:-$materialButtonWidth+2;
+                @include opacity(1.0);
+                @include rotate(720deg);
+            }
+        }
+    }
+}
+
+.material-button-rect
+{
+    @include material_button_rect;
+}
+
+.material-button-rect-hover
+{
+    &:hover
+    {
+        @include material_button_rect;
+    }
+}
+
+@mixin material_button_dial
+{
+    .material-button-item
+    {
+        left:50%;
+        margin-left:-$materialButtonItemHeight/2;
+        width:$materialButtonItemHeight;
+        height:$materialButtonItemHeight;
+        &:before
+        {
+            content:'';
+            display:block;
+            width:$materialButtonItemHeight;
+            height:$materialButtonItemHeight;
+            position:absolute;
+            margin-left:-10px;
+        }
+        &:after
+        {
+            content:'';
+            display:block;
+            width:$materialButtonItemHeight;
+            height:$materialButtonItemHeight;
+            position:absolute;
+            margin-left:10px;
+        }
+    }
+}
+
+.material-button-dial
+{
+    @include material_button_dial;
+}
+
+.material-button-dial-hover
+{
+    &:hover
+    {
+        @include material_button_dial;
+    }
+}
