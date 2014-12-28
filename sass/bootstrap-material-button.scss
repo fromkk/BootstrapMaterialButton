@@ -6,6 +6,7 @@ $materialButtonItemHeight: 3px;
 $materialButtonItemMargin: 10px;
 $materialButtonItemColor: #FFFFFF;
 $materialButtonItemHoverColor: #CCCCCC;
+$materialButtonBorderRadius: 2px;
 
 .navbar
 {
@@ -76,6 +77,7 @@ $materialButtonItemHoverColor: #CCCCCC;
     left:50%;
     margin-left:-$materialButtonWidth/2;
     @include transition(all 0.25s);
+    @include border-radius($materialButtonBorderRadius);
 }
 
 .material-button
@@ -348,6 +350,7 @@ $materialButtonItemHoverColor: #CCCCCC;
                 top:-$materialButtonWidth+2;
                 @include opacity(1.0);
                 @include rotate(720deg);
+                @include border-radius($materialButtonBorderRadius);
             }
         }
     }
@@ -382,6 +385,7 @@ $materialButtonItemHoverColor: #CCCCCC;
             height:$materialButtonItemHeight;
             position:absolute;
             margin-left:-10px;
+            @include border-radius($materialButtonBorderRadius);
         }
         &:after
         {
@@ -391,6 +395,7 @@ $materialButtonItemHoverColor: #CCCCCC;
             height:$materialButtonItemHeight;
             position:absolute;
             margin-left:10px;
+            @include border-radius($materialButtonBorderRadius);
         }
     }
 }
